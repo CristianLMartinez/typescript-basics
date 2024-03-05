@@ -9,3 +9,5 @@
 * Array
 * Tuple
 * Enum
+* Any
+* Literal types

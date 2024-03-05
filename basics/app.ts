@@ -1,24 +1,18 @@
-enum Role {
-  ADMIN = "Admin",
-  USER = "USER",
-  USER_READ = "USER_READ",
+type Combinable = number | string;
+type ResultType = "as-number" | "as-text";
+
+function combine(input1: Combinable, input2: Combinable, resultConversion: ResultType){
+  let result;
+  if(typeof input1 === "number" && typeof input2 === 'number' && resultConversion === "as-number") {
+    result = +input1 + +input2; // math operation
+  } else {
+    result = input1.toString() + input2.toString(); // string concatenations
+  }
+  return result;
 }
 
-const person: {
-  name: string;
-  age: number;
-  hobbies: string[];
-  role: Role;
-} = {
-  name: "Cristian",
-  age: 20,
-  hobbies: ["swimming", "play"],
-  role: Role.ADMIN,
-};
+const combineAges = combine(10, 30, "as-number");
+console.log(combineAges); // 40
 
-for (const hobbie of person.hobbies) {
-  console.log(hobbie);
-}
-
-console.log(person.name);
-console.log(person.role);
+const combineName = combine("Hello ", "World!", 'as-text');
+console.log(combineName); //Hello World!
